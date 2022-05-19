@@ -9,7 +9,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL ="http://demo7877231.mockable.io/api/v1/post"
+const val BASE_URL ="http://example.com/"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,23 +29,23 @@ class MainActivity : AppCompatActivity() {
 
         val retrofitData = retrofitBuilder.getData()
 
-        retrofitData.enqueue(object : Callback<List<FirstData>?> {
+        retrofitData.enqueue(object : Callback<List<Payload>?> {
             override fun onResponse(
-                call: Call<List<FirstData>?>,
-                response: Response<List<FirstData>?>
+                call: Call<List<Payload>?>,
+                response: Response<List<Payload>?>
             ) {
                 val responseType = response.body()!!
 
                 val myStringBuilder = StringBuilder()
                 for (myData in responseType) {
-                    myStringBuilder.append(myData.type)
-                    myStringBuilder.append("\n")
+                    myStringBuilder.append(myData.text)
+
                 }
 
             localtext.text = myStringBuilder
 
             }
-            override fun onFailure(call: Call<List<FirstData>?>, t: Throwable) {
+            override fun onFailure(call: Call<List<Payload>?>, t: Throwable) {
                 Log.d("MainActivity", "onFailure: ")
             }
         })

@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ApiInterface {
 
-    @GET("/271")
-    fun getData(): Call<List<FirstData>>
+    @GET("https://demo7877231.mockable.io/api/v1/post/271")
+    fun getData(): Call<List<Payload>>
 }
